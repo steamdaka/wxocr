@@ -251,6 +251,8 @@
         async function processImage() {
             const file = document.getElementById('fileInput').files[0];
             const url = document.getElementById('urlInput').value;
+            const imgsrc = document.getElementById('preview').src;
+
             let base64Data = '';
 
             try {
@@ -261,6 +263,8 @@
                     base64Data = await fileToBase64(file);
                 } else if (url) {
                     base64Data = await urlToBase64(url);
+                } else if (imgsrc) {
+                     base64Data = imgsrc
                 } else {
                     showError('请选择图片或输入图片URL');
                     return;
